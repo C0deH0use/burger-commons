@@ -22,8 +22,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
-      - name: Build and Test with Gradle Wrapper
-        run: ./gradlew build
+      - name: Build and run Scan
+        run: ./gradlew build --scan
 
       - name: Publish to GitHub Packages
         run: ./gradlew publish
