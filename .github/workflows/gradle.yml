@@ -50,16 +50,6 @@ jobs:
           **/build/reports/tests/test/**
           **/build/test-results/tests/*.xml
 
-    - name: Upload IntegrationTest Results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: integration-test-results
-        retention-days: 2 day
-        path: |
-          **/build/test-results/integrationTest/*.xml
-          **/build/reports/tests/integrationTest/**
-
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
@@ -68,14 +58,6 @@ jobs:
         comment_mode: always
         retention-days: 2 day
         files: "**/build/test-results/test/*.xml"
-
-    - name: Publish Integration Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
-      with:
-        check_name: Integration Tests Results
-        comment_mode: always
-        files: "**/build/test-results/integrationTest/*.xml"
 
     - name: Generate JaCoCo Badge
       uses: cicirello/jacoco-badge-generator@v2
