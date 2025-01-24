@@ -14,7 +14,7 @@ checkstyle {
 }
 
 group = "pl.codehouse.commons"
-version = "1.0.0-SNAPSHOT"
+version = "1.1.0-SNAPSHOT"
 val junitVersion = "5.11.4"
 val commonsLang = "3.17.0"
 val reactorCore = "3.7.2"
