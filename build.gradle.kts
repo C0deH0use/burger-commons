@@ -3,6 +3,8 @@ plugins {
 	idea
 	jacoco
 	checkstyle
+	id("org.springframework.boot") version "3.4.2"
+	id("io.spring.dependency-management") version "1.1.7"
 }
 
 checkstyle {
@@ -12,7 +14,7 @@ checkstyle {
 }
 
 group = "pl.codehouse.commons"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 val junitVersion = "5.11.4"
 val commonsLang = "3.17.0"
 val reactorCore = "3.7.2"
@@ -31,6 +33,8 @@ dependencies {
 	implementation("org.apache.commons:commons-lang3:$commonsLang")
 	implementation("io.projectreactor:reactor-core:$reactorCore")
 
+	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
 }
 
