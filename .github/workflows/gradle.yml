@@ -38,7 +38,7 @@ jobs:
         gradle-version: '8.10.1'
 
     - name: Build and Test with Gradle Wrapper
-      run: ./gradlew build jacocoTestReport --info
+      run: ./gradlew build
 
     - name: Upload Test Results
       if: always()
