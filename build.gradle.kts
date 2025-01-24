@@ -41,6 +41,12 @@ publishing {
 			}
 		}
 	}
+
+	publications {
+		create<MavenPublication>("gpr") {
+			from(components["java"])
+		}
+	}
 }
 
 dependencies {
