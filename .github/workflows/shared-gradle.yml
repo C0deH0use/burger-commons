@@ -89,9 +89,6 @@ jobs:
           name: jacoco-report
           path: build/reports/jacoco/
 
-      - id: commit
-        uses: prompt/actions-commit-hash@c5ad2f68ba7eb1ef85bf910e2cc0278cca92d987
-
   dependency-submission:
     runs-on: ubuntu-latest
     permissions:
