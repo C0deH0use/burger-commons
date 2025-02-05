@@ -14,11 +14,11 @@ checkstyle {
 }
 
 group = "pl.codehouse.commons"
-version = "1.1.0-SNAPSHOT"
-val junitVersion = "5.11.4"
-val commonsLang = "3.17.0"
-val reactorCore = "3.7.2"
-val springBootTest = "3.4.2"
+val applicationVersion: String by project
+val commonsLang: String by project
+val junitVersion: String by project
+val reactorCore: String by project
+val springBootTest: String by project
 
 java {
 	toolchain {
