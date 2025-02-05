@@ -1,4 +1,8 @@
 name: Gradle build Pipelines
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
 
 on:
   workflow_call:
@@ -6,11 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      contents: write
-      pull-requests: write
-
     outputs:
       commit-sha: ${{ steps.commit.outputs.short }}
       application-version: ${{ steps.read-properties.outputs.applicationVersion }}

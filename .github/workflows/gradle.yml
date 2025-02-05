@@ -1,0 +1,11 @@
+name: Gradle Build Pipelines
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    uses: c0deh0use/burger-commons/.github/workflows/shared-gradle.yml@main
