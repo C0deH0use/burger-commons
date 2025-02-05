@@ -10,10 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      commit-sha: ${{ steps.commit.outputs.short }}
-      application-version: ${{ steps.read-properties.outputs.applicationVersion }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -93,20 +89,8 @@ jobs:
           name: jacoco-report
           path: build/reports/jacoco/
 
-      - name: Read Properties
-        id: read-properties
-        uses: christian-draeger/read-properties@908f99d3334be3802ec7cb528395a69d19914e7b  #v1.1.1
-        with:
-          path: 'gradle.properties'
-          properties: 'applicationVersion'
-
       - id: commit
         uses: prompt/actions-commit-hash@c5ad2f68ba7eb1ef85bf910e2cc0278cca92d987
-
-      - name: Application release version
-        run: |  
-          echo GIT Commit HASH: ${{ steps.commit.outputs.short }}
-          echo Application Version ${{ steps.read-properties.outputs.applicationVersion }}
 
   dependency-submission:
     runs-on: ubuntu-latest

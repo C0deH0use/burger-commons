@@ -10,6 +10,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     if: >
       github.ref == 'refs/heads/main' || 
       (github.event_name == 'pull_request' && startsWith(github.head_ref, 'test/cicd-pipeline-test'))
@@ -21,8 +22,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Read Properties
+        id: read-properties
+        uses: christian-draeger/read-properties@908f99d3334be3802ec7cb528395a69d19914e7b  #v1.1.1
+        with:
+          path: 'gradle.properties'
+          properties: 'applicationVersion'
+
+      - name: Application release version
+        run: |
+          echo GIT Commit HASH: ${{ steps.commit.outputs.short }}
+          echo Application Version ${{ steps.read-properties.outputs.applicationVersion }}
+
       - name: Set Short SHA for Docker Image
-        run: echo "DOCKER_RELEASE_VERSION=${{ needs.build.outputs.application-version }}-${{ needs.build.outputs.commit-sha }}" >> $GITHUB_ENV
+        run: echo "DOCKER_RELEASE_VERSION=${{ steps.read-properties.outputs.applicationVersion }}-${{ steps.commit.outputs.short }}" >> $GITHUB_ENV
 
       - name: Set DOCKER IMAGE in lower case
         run: echo "DOCKER_IMAGE=${GITHUB_REPOSITORY@L}" >> $GITHUB_ENV   # Bash function to switch to lower case the environment variable.
