@@ -1,4 +1,5 @@
-name: Docker Publish Pipeline
+name: Build and publish DockerImage(s) workflow
+
 permissions:
   checks: write
   contents: write
